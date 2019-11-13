@@ -10,6 +10,7 @@
         app:title="Product"
         android:id="@+id/productToolBar"
         android:background="@drawable/backgroud_login"
+        app:titleTextColor="#F0EAEA"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
     <ListView

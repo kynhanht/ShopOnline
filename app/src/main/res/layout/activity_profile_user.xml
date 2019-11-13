@@ -10,6 +10,7 @@
     android:background="@drawable/backgroud_login">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/profileToolBar"
+        app:titleTextColor="#F0EAEA"
         app:title="Profile"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
