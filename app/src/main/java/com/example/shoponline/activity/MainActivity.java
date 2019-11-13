@@ -65,11 +65,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mapping();
-//      addListViewNav();
         actionBar();
         actionViewFlipper();
-        addNewProduct();
         addUser();
+        dbHelper=new DBHelper(this,"product.db",null,1);
 
 
     }
@@ -88,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper=findViewById(R.id.viewFlipper);
         recyclerView=findViewById(R.id.recyclerView);
         navigationView=findViewById(R.id.navigationView);
-//        listViewNav=findViewById(R.id.listViewNav);
         drawerLayout=findViewById(R.id.drawerLayout);
         userImageView=findViewById(R.id.userImageView);
 
@@ -134,20 +132,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-//        listViewNav.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                if(position==1){
-//                    Intent intent=new Intent(getApplicationContext(),ProductActivity.class);
-//                    intent.putExtra("type","SmartPhone");
-//                    startActivity(intent);
-//                }else if(position==2){
-//                    Intent intent=new Intent(getApplicationContext(),ProductActivity.class);
-//                    intent.putExtra("type","Laptop");
-//                    startActivity(intent);
-//                }
-//            }
-//        });
         if(cart!=null){
 
         }else{
@@ -188,38 +172,33 @@ public class MainActivity extends AppCompatActivity {
         viewFlipper.setAutoStart(true);
     }
 
-//    private void addListViewNav(){
-//        List<TypeProduct> typeProductList=new ArrayList<>();
-//        typeProductList.add(new TypeProduct(1,"Home",R.drawable.home));
-//        typeProductList.add(new TypeProduct(2,"SmartPhone",R.drawable.smartphone));
-//        typeProductList.add(new TypeProduct(3,"Laptop",R.drawable.laptop));
-//        typeProductList.add(new TypeProduct(4,"Contact",R.drawable.contact));
-//        typeProductList.add(new TypeProduct(5,"Information",R.drawable.info));
-//        typeProductAdapter=new TypeProductAdapter(this,R.layout.type_product_list_view,typeProductList);
-//        listViewNav.setAdapter(typeProductAdapter);
-//    }
-    private void addNewProduct(){
-        dbHelper=new DBHelper(this,"product.db",null,1);
-        db=dbHelper.getReadableDatabase();
-        List<Product> productList=new ArrayList<>();
-        Cursor cursor=db.rawQuery(Constant.SELECT_NEW_PRODUCT,null);
-        while(cursor.moveToNext()){
-            Product product=new Product();
-            product.setIdProduct(cursor.getInt(cursor.getColumnIndex("productId")));
-            product.setNameProduct(cursor.getString(cursor.getColumnIndex("productName")));
-            product.setPrice(cursor.getLong(cursor.getColumnIndex("productPrice")));
-            product.setImageProduct(cursor.getInt(cursor.getColumnIndex("productImage")));
-            product.setDescriptionProduct(cursor.getString(cursor.getColumnIndex("productDescription")));
-            product.setIdTypeProduct(cursor.getInt(cursor.getColumnIndex("typeProductId")));
-            product.setQuantity(cursor.getInt(cursor.getColumnIndex("quantity")));
-            productList.add(product);
-        }
-        newProductAdapter=new NewProductAdapter(this,R.layout.new_product,productList);
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
-        recyclerView.setAdapter(newProductAdapter);
-        recyclerView.addItemDecoration(new SpacesItemDecoration(20));
 
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(dbHelper!=null){
+            db=dbHelper.getReadableDatabase();
+            List<Product> productList=new ArrayList<>();
+            Cursor cursor=db.rawQuery(Constant.SELECT_NEW_PRODUCT,null);
+            while(cursor.moveToNext()){
+                Product product=new Product();
+                product.setIdProduct(cursor.getInt(cursor.getColumnIndex("productId")));
+                product.setNameProduct(cursor.getString(cursor.getColumnIndex("productName")));
+                product.setPrice(cursor.getLong(cursor.getColumnIndex("productPrice")));
+                product.setImageProduct(cursor.getInt(cursor.getColumnIndex("productImage")));
+                product.setDescriptionProduct(cursor.getString(cursor.getColumnIndex("productDescription")));
+                product.setIdTypeProduct(cursor.getInt(cursor.getColumnIndex("typeProductId")));
+                product.setQuantity(cursor.getInt(cursor.getColumnIndex("quantity")));
+                productList.add(product);
+            }
+            newProductAdapter=new NewProductAdapter(this,R.layout.new_product,productList);
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+            recyclerView.setAdapter(newProductAdapter);
+            recyclerView.addItemDecoration(new SpacesItemDecoration(20));
+        }
 
     }
 

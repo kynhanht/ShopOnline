@@ -80,8 +80,10 @@ public class CartItemAdapter extends BaseAdapter {
         long price=cartItem.getPriceProduct()*cartItem.getQuantity();
         priceCartItemTv.setText("Price: "+decimalFormat.format(price)+" Đ");
         cartValueBtn.setText(String.valueOf(cartItem.getQuantity()));
+
+
         int quantity=Integer.parseInt(cartValueBtn.getText().toString());
-        if(quantity>=10){
+        if(quantity>=cartItem.getRealQuantity()){
             cartAddBtn.setVisibility(View.INVISIBLE);
             cartMinusBtn.setVisibility(View.VISIBLE);
         }else if(quantity<=1){
@@ -101,7 +103,7 @@ public class CartItemAdapter extends BaseAdapter {
                 long newPrice=MainActivity.cart.getCartItemList().get(position).getPriceProduct()*newQuantity;
                 priceCartItemTv.setText("Price: "+decimalFormat.format(newPrice)+" Đ");
                 CartActivity.totalPriceTv.setText(decimalFormat.format(MainActivity.cart.getTotalprice())+" Đ");
-                if(newQuantity>=10){
+                if(newQuantity>=cartItem.getRealQuantity()){
                     cartAddBtn.setVisibility(View.INVISIBLE);
                     cartMinusBtn.setVisibility(View.VISIBLE);
                 }else if(newQuantity<=1){
@@ -123,7 +125,7 @@ public class CartItemAdapter extends BaseAdapter {
                 long newPrice=MainActivity.cart.getCartItemList().get(position).getPriceProduct()*newQuantity;
                 priceCartItemTv.setText("Price: "+decimalFormat.format(newPrice)+" Đ");
                 CartActivity.totalPriceTv.setText(decimalFormat.format(MainActivity.cart.getTotalprice())+" Đ");
-                if(newQuantity>=10){
+                if(newQuantity>=cartItem.getRealQuantity()){
                     cartAddBtn.setVisibility(View.INVISIBLE);
                     cartMinusBtn.setVisibility(View.VISIBLE);
                 }else if(newQuantity<=1){

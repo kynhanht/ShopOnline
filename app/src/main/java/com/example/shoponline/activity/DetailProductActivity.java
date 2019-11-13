@@ -28,8 +28,7 @@ public class DetailProductActivity extends AppCompatActivity {
 
     private Toolbar detailToolBar;
     private ImageView detailProductImageView;
-    private TextView detailNameProductTv,detailPriceProductTv,detailDescriptionTv;
-    private Spinner quantitySpinner;
+    private TextView detailNameProductTv,detailPriceProductTv,detailQuantityTv,detailDescriptionTv;
     private Button addBtn;
 
     @Override
@@ -47,12 +46,8 @@ public class DetailProductActivity extends AppCompatActivity {
         detailNameProductTv=findViewById(R.id.detailNameProductTv);
         detailPriceProductTv=findViewById(R.id.detailPriceProductTv);
         detailDescriptionTv=findViewById(R.id.detailDescriptionTv);
-        quantitySpinner=findViewById(R.id.quantitySpinner);
+        detailQuantityTv=findViewById(R.id.detailQuantityTv);
         addBtn=findViewById(R.id.addBtn);
-
-        Integer[] quantity=new Integer[]{1,2,3,4,5,6,7,8,9,10};
-        ArrayAdapter<Integer> arrayAdapter=new ArrayAdapter<>(this,android.R.layout.simple_spinner_dropdown_item,quantity);
-        quantitySpinner.setAdapter(arrayAdapter);
 
 
     }
@@ -81,18 +76,19 @@ public class DetailProductActivity extends AppCompatActivity {
         detailNameProductTv.setText(nameProduct);
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
         detailPriceProductTv.setText("Price: "+decimalFormat.format(price)+" Đ");
+        detailQuantityTv.setText("Quantity: "+quantity);
         detailDescriptionTv.setText(descriptionProduct);
 
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int quantity=Integer.parseInt(quantitySpinner.getSelectedItem().toString());
                 CartItem cartItem=new CartItem();
                 cartItem.setProductId(product.getIdProduct());
                 cartItem.setNameProduct(product.getNameProduct());
                 cartItem.setImageProduct(product.getImageProduct());
                 cartItem.setPriceProduct(product.getPrice());
-                cartItem.setQuantity(quantity);
+                cartItem.setQuantity(1);
+                cartItem.setRealQuantity(product.getQuantity());
                 MainActivity.cart.addCartItem(cartItem);
                 Intent intent=new Intent(getApplicationContext(),CartActivity.class);
                 startActivity(intent);

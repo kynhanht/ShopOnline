@@ -38,7 +38,7 @@ public class ProductActivity extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         mapping();
         actionToolBar();
-        addProductToListView();
+        dbHelper=new DBHelper(this,"product.db",null,1);
 
     }
 
@@ -56,35 +56,38 @@ public class ProductActivity extends AppCompatActivity {
         });
     }
 
-    private void addProductToListView(){
-        Intent intent=getIntent();
-        int type=intent.getIntExtra("type",1);
-        dbHelper=new DBHelper(this,"product.db",null,1);
-        db=dbHelper.getReadableDatabase();
-        Cursor cursor=db.rawQuery(Constant.SELECT_PRODUCT_BY_TYPE_PRODUCT,new String[]{String.valueOf(type)});
-        List<Product> productList=new ArrayList<>();
-        while(cursor.moveToNext()){
-            Product product=new Product();
-            product.setIdProduct(cursor.getInt(cursor.getColumnIndex("productId")));
-            product.setNameProduct(cursor.getString(cursor.getColumnIndex("productName")));
-            product.setPrice(cursor.getLong(cursor.getColumnIndex("productPrice")));
-            product.setImageProduct(cursor.getInt(cursor.getColumnIndex("productImage")));
-            product.setDescriptionProduct(cursor.getString(cursor.getColumnIndex("productDescription")));
-            product.setIdTypeProduct(cursor.getInt(cursor.getColumnIndex("typeProductId")));
-            product.setQuantity(cursor.getInt(cursor.getColumnIndex("quantity")));
-            productList.add(product);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(dbHelper!=null){
+            Intent intent=getIntent();
+            int type=intent.getIntExtra("type",1);
+            db=dbHelper.getReadableDatabase();
+            Cursor cursor=db.rawQuery(Constant.SELECT_PRODUCT_BY_TYPE_PRODUCT,new String[]{String.valueOf(type)});
+            List<Product> productList=new ArrayList<>();
+            while(cursor.moveToNext()){
+                Product product=new Product();
+                product.setIdProduct(cursor.getInt(cursor.getColumnIndex("productId")));
+                product.setNameProduct(cursor.getString(cursor.getColumnIndex("productName")));
+                product.setPrice(cursor.getLong(cursor.getColumnIndex("productPrice")));
+                product.setImageProduct(cursor.getInt(cursor.getColumnIndex("productImage")));
+                product.setDescriptionProduct(cursor.getString(cursor.getColumnIndex("productDescription")));
+                product.setIdTypeProduct(cursor.getInt(cursor.getColumnIndex("typeProductId")));
+                product.setQuantity(cursor.getInt(cursor.getColumnIndex("quantity")));
+                productList.add(product);
 
-        }
+            }
 
-        if(type==1){
-            productToolBar.setTitle("Laptop");
-        }else if(type==2){
-            productToolBar.setTitle("SmartPhone");
-        }else{
-            productToolBar.setTitle("Watch");
+            if(type==1){
+                productToolBar.setTitle("Laptop");
+            }else if(type==2){
+                productToolBar.setTitle("SmartPhone");
+            }else{
+                productToolBar.setTitle("Watch");
+            }
+            productApdater=new ProductApdater(this,R.layout.product,productList);
+            productListView.setAdapter(productApdater);
         }
-        productApdater=new ProductApdater(this,R.layout.product,productList);
-        productListView.setAdapter(productApdater);
     }
 
     private void actionToolBar(){

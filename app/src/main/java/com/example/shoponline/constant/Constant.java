@@ -89,5 +89,9 @@ public class Constant {
 
     public static final String INSERT_ORDER_LINE="" +
             "INSERT INTO OrderLine(orderId,productId,quantity,unitPrice) VALUES(?,?,?,?)";
+    //update
+    public static final  String UPDATE_QUANTITY_PRODUCT="" +
+            "UPDATE PRODUCT SET quantity=? " +
+            "WHERE productId=?";
 
 }

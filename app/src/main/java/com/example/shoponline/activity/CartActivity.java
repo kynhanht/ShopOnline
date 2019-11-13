@@ -115,6 +115,12 @@ public class CartActivity extends AppCompatActivity  {
                             cartItemList.get(i).getPriceProduct()
                     });
                 }
+                //update quantity for product
+                for(int i=0;i<cartItemList.size();i++){
+                    int newQuantity=cartItemList.get(i).getRealQuantity()-cartItemList.get(i).getQuantity();
+                    int productId=cartItemList.get(i).getProductId();
+                    db.execSQL(Constant.UPDATE_QUANTITY_PRODUCT,new Object[]{newQuantity,productId});
+                }
                 finish();
                 MainActivity.cart=new Cart();
 
