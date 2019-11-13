@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:gravity="bottom"
+    android:background="@drawable/backgroud_login">
+    <ImageView
+        android:id="@+id/userImageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/user"/>
+    <TextView
+        android:id="@+id/nameUserTv"
+        android:layout_margin="5dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nguyen Thanh Ky Nhan"/>
+    <TextView
+        android:id="@+id/emailUserTv"
+        android:layout_margin="5dp"
+        android:textSize="18sp"
+        android:textColor="#FCF3EDED"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="nhandayht@gmail.com"/>
+
+
+</LinearLayout>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.DetailProductActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/detailProductToolBar"
+        android:background="@drawable/backgroud_login"
+        app:titleTextColor="#F0EAEA"
+        app:title="Detail Product"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/detaiProductImageView"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_margin="10dp"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/detailNameProductTv"
+                    android:text="Name Product"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/detailPriceProductTv"
+                    android:text="Price"
+                    android:textColor="#f11"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <Spinner
+                    android:background="@drawable/spinner"
+                    android:layout_margin="3dp"
+                    android:padding="15dp"
+                    android:id="@+id/quantitySpinner"
+                    android:textAlignment="center"
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+                <Button
+                    android:id="@+id/addBtn"
+                    android:textColor="#8BC34A"
+                    android:text="Add to card"
+                    android:textSize="20sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+             <TextView
+                 android:layout_margin="10dp"
+                 android:textColor="#f11"
+                 android:textSize="25sp"
+                 android:text="Product Description"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"/>
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/detailDescriptionTv"
+                    android:layout_marginLeft="5dp"
+                    android:padding="10dp"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </ScrollView>
+
+        </LinearLayout>
+
+</LinearLayout>

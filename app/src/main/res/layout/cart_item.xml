@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="10">
+    <LinearLayout
+        android:layout_weight="3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:adjustViewBounds="true"
+            android:src="@mipmap/ic_launcher"
+            android:layout_margin="5dp"
+            android:id="@+id/cartImageView"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="7"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp">
+        <TextView
+            android:id="@+id/nameCartItemTv"
+            android:textSize="25sp"
+            android:text="Name Cart Item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/priceCartItemTv"
+            android:textSize="15sp"
+            android:textColor="#f11"
+            android:text="Price Cart Item"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <Button
+                android:id="@+id/cartMinusBtn"
+                android:text="-"
+                android:textSize="30sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/cartValueBtn"
+                android:focusable="false"
+                android:text="1"
+                android:layout_marginTop="5dp"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:textSize="30sp" />
+            <Button
+                android:id="@+id/cartAddBtn"
+                android:text="+"
+                android:textSize="30sp"
+                android:layout_marginTop="5dp"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.LoginActivity"
+    android:background="@drawable/backgroud_login"
+    android:orientation="vertical"
+    android:weightSum="10">
+
+   <LinearLayout
+       android:layout_weight="4"
+       android:layout_width="match_parent"
+       android:layout_height="0dp"
+       android:gravity="center">
+       <ImageView
+           android:id="@+id/imageView3"
+           android:layout_width="150dp"
+           android:layout_height="150dp"
+           app:srcCompat="@drawable/login" />
+   </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+         android:orientation="vertical">
+        <EditText
+            android:id="@+id/usernameEt"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="#11000000"
+            android:hint="Username"
+            android:textSize="16dp"
+            android:inputType="textPersonName"
+            android:ems="10"/>
+        <EditText
+            android:id="@+id/passwordEt"
+            android:drawableLeft="@drawable/ic_action_password"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="#11000000"
+            android:hint="Password"
+            android:textSize="16dp"
+            android:inputType="textPassword"
+            android:ems="10"/>
+        <TextView
+            android:id="@+id/errorLoginTv"
+            android:layout_marginTop="10dp"
+            android:textColor="#E01010"
+            android:text="Incorrect email or password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            app:cardCornerRadius="25dp"
+            app:cardBackgroundColor="@color/colorAccent"
+            app:cardElevation="10dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center">
+                <Button
+                    android:id="@+id/loginBtn"
+                    android:background="@color/colorAccent"
+                    android:textColor="#fff"
+                    android:textSize="18dp"
+                    android:text="Login"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+        <TextView
+            android:id="@+id/registerTv"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register Here"
+            android:textColor="#fff"
+            android:textSize="18dp"/>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.ProfileUserActivity"
+    android:orientation="vertical"
+    android:weightSum="10"
+    android:background="@drawable/backgroud_login">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/profileToolBar"
+        app:title="Profile"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+    <LinearLayout
+        android:gravity="center"
+        android:layout_weight="4"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/profileImageView"
+            android:src="@drawable/user"
+            android:layout_width="150dp"
+            android:layout_height="150dp"/>
+        <TextView
+            android:id="@+id/profileNameTv"
+            android:layout_marginTop="10dp"
+            android:textColor="#F3EFEF"
+            android:textSize="21sp"
+            android:textStyle="bold"
+            android:text="Nguyen Thanh Ky Nhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:gravity="center|center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/profileUsernameTv"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_user"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/profileEmailTv"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_email"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/profilePhoneTv"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="#11000000"
+            android:drawableLeft="@drawable/ic_action_phone"
+            android:ems="10"
+            android:gravity="center_vertical"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>
