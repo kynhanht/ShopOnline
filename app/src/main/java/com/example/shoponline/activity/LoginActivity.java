@@ -33,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mapping();
-        getAllUser();
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,26 +59,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-
-    }
-
-    private void getAllUser() {
         dbHelper = new DBHelper(this, "product.db", null, 1);
-        db = dbHelper.getReadableDatabase();
-        userList = new ArrayList<>();
-        Cursor cursor = db.rawQuery(Constant.SELECT_ALL_USER, null);
-        while(cursor.moveToNext()){
-            User user=new User();
-            user.setUsername(cursor.getString(cursor.getColumnIndex("username")));
-            user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-            user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-            user.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
-            user.setName(cursor.getString(cursor.getColumnIndex("name")));
-            userList.add(user);
 
-        }
     }
+
 
     private void mapping() {
         usernameEt=findViewById(R.id.usernameEt);
@@ -88,5 +71,25 @@ public class LoginActivity extends AppCompatActivity {
         registerTv=findViewById(R.id.registerTv);
         errorLoginEt.setVisibility(View.INVISIBLE);
         loginBtn=findViewById(R.id.loginBtn);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(dbHelper!=null){
+            db = dbHelper.getReadableDatabase();
+            userList = new ArrayList<>();
+            Cursor cursor = db.rawQuery(Constant.SELECT_ALL_USER, null);
+            while(cursor.moveToNext()){
+                User user=new User();
+                user.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                user.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                userList.add(user);
+
+            }
+        }
     }
 }

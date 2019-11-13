@@ -34,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity {
         dbHelper = new DBHelper(this, "product.db", null, 1);
         mapping();
         actionToolBar();
-        getAllUser();
     }
 
     private void actionToolBar() {
@@ -116,10 +115,10 @@ public class RegisterActivity extends AppCompatActivity {
                         db.execSQL(Constant.INSERT_USER,new Object[]{
                                 username,password,email,phone,name
                         });
-                        User user=new User(username,password,email,phone,name);
-                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
-                        intent.putExtra("user",user);
-                        startActivity(intent);
+//                        User user=new User(username,password,email,phone,name);
+//                        Intent intent=new Intent(getApplicationContext(),MainActivity.class);
+//                        intent.putExtra("user",user);
+//                        startActivity(intent);
                         finish();
                     }
                 }else{
@@ -146,19 +145,24 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-    private void getAllUser() {
-        db = dbHelper.getReadableDatabase();
-        userList = new ArrayList<>();
-        Cursor cursor = db.rawQuery(Constant.SELECT_ALL_USER, null);
-        while(cursor.moveToNext()){
-            User user=new User();
-            user.setUsername(cursor.getString(cursor.getColumnIndex("username")));
-            user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
-            user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
-            user.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
-            user.setName(cursor.getString(cursor.getColumnIndex("name")));
-            userList.add(user);
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(dbHelper!=null){
+            db = dbHelper.getReadableDatabase();
+            userList = new ArrayList<>();
+            Cursor cursor = db.rawQuery(Constant.SELECT_ALL_USER, null);
+            while(cursor.moveToNext()){
+                User user=new User();
+                user.setUsername(cursor.getString(cursor.getColumnIndex("username")));
+                user.setPassword(cursor.getString(cursor.getColumnIndex("password")));
+                user.setEmail(cursor.getString(cursor.getColumnIndex("email")));
+                user.setPhone(cursor.getString(cursor.getColumnIndex("phone")));
+                user.setName(cursor.getString(cursor.getColumnIndex("name")));
+                userList.add(user);
+
+            }
         }
     }
 }
