@@ -5,22 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.HistoryOrderActivity"
-    android:orientation="vertical"
-    android:background="@drawable/backgroud_login">
+    android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/historyOrderToolBar"
+        android:background="@drawable/backgroud_login"
         app:title="History Order"
         app:titleTextColor="#F7F3F3"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
+
     <ListView
         android:id="@+id/historyOrderListView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:background="#F6FAF2"
-        android:divider="@android:color/background_light"
-        android:dividerHeight="10sp"
-        />
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

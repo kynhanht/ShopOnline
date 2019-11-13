@@ -12,46 +12,40 @@
         app:title="View Past Order"
         app:titleTextColor="#F7F3F3"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#8BC34A"/>
+        android:background="@drawable/backgroud_login"
+        android:layout_height="?attr/actionBarSize" />
     <LinearLayout
-        android:orientation="vertical"
         android:layout_weight="2"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:gravity="center">
-        <TextView
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#FCFAF9"
-            android:text="Địa Chỉ - Khu công nghệ cao Hòa Lạc - Thạch thất"
-            android:textColor="#1D1B1B"
-            android:textSize="30sp" />
 
         <TextView
             android:id="@+id/orderDetailNumberTv"
-            android:text="Order number #1"
-            android:layout_marginTop="10dp"
-            android:textSize="26sp"
-            android:textColor="#4CAF50"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:gravity="center"
+            android:text="Order number #1"
+            android:textColor="#181717"
+            android:textSize="30sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="7"
+        android:layout_weight="6"
         android:orientation="vertical">
         <ListView
             android:id="@+id/orderDetailListView"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
     </LinearLayout>
     <LinearLayout
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="horizontal">

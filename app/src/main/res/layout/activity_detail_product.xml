@@ -54,7 +54,7 @@
                     android:layout_height="wrap_content"/>
                 <Button
                     android:id="@+id/addBtn"
-                    android:textColor="#8BC34A"
+                    android:textColor="#f11"
                     android:text="Add to card"
                     android:textSize="20sp"
                     android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:orientation="vertical">
              <TextView
                  android:layout_margin="10dp"
-                 android:textColor="#f11"
+                 android:textColor="@color/colorPrimaryDark"
                  android:textSize="25sp"
                  android:text="Product Description"
                  android:layout_width="wrap_content"

@@ -6,11 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <androidx.cardview.widget.CardView
-        app:cardBackgroundColor="@color/cardview_light_background"
+        app:cardBackgroundColor="@color/cardview_shadow_end_color"
         android:id="@+id/cardView"
         app:cardCornerRadius="4dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <FrameLayout
             android:layout_width="match_parent"

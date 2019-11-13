@@ -1,15 +1,21 @@
 package com.example.shoponline.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.ContextThemeWrapper;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -53,8 +59,6 @@ public class CartActivity extends AppCompatActivity  {
         if(MainActivity.cart.getCartItemList().isEmpty()){
             cartTv.setVisibility(View.VISIBLE);
             cartListView.setVisibility(View.INVISIBLE);
-            checkOutBtn.setVisibility(View.INVISIBLE);
-            continueBtn.setVisibility(View.INVISIBLE);
 
         }else{
             cartItemAdapter=new CartItemAdapter(this,R.layout.cart_item,MainActivity.cart.getCartItemList());
@@ -68,6 +72,11 @@ public class CartActivity extends AppCompatActivity  {
     }
 
     public void checkOut(View view){
+        if(MainActivity.cart.getCartItemList().isEmpty()){
+            Toast.makeText(this,"List your cart is empty",Toast.LENGTH_LONG).show();
+            return;
+        }
+
         AlertDialog alertDialog=null;
         AlertDialog.Builder builder=new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.myDialog));
         builder.setTitle("Check Out!");
@@ -140,9 +149,30 @@ public class CartActivity extends AppCompatActivity  {
         cartListView=findViewById(R.id.cartListView);
         checkOutBtn=findViewById(R.id.checkOutBtn);
         continueBtn=findViewById(R.id.continueBtn);
+        registerForContextMenu(cartListView);
 
     }
 
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        getMenuInflater().inflate(R.menu.context_menu,menu);
 
+    }
 
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.deleteCart){
+            AdapterView.AdapterContextMenuInfo info= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+            int pos =info.position;
+            MainActivity.cart.getCartItemList().remove(pos);
+            cartItemAdapter.notifyDataSetChanged();
+            if(MainActivity.cart.getCartItemList().isEmpty()){
+                cartTv.setVisibility(View.VISIBLE);
+                cartListView.setVisibility(View.INVISIBLE);
+            }
+
+        }
+        return super.onContextItemSelected(item);
+    }
 }

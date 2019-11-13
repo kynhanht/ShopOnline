@@ -82,7 +82,7 @@ public class OrderDetailActivity extends AppCompatActivity {
         Cart cart=new Cart();
         cart.setCartItemList(cartItemList);
         DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
-        orderDetailTotalTv.setText("Price: "+decimalFormat.format(cart.getTotalprice())+" Đ");
+        orderDetailTotalTv.setText("Total: "+decimalFormat.format(cart.getTotalprice())+" Đ");
     }
 
     @Override
