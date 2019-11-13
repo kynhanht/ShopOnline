@@ -102,6 +102,7 @@ public class AboutUsActivity extends AppCompatActivity implements OnMapReadyCall
     }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        System.out.println("1312312");
         getMenuInflater().inflate(R.menu.menu,menu);
         return super.onCreateOptionsMenu(menu);
     }
