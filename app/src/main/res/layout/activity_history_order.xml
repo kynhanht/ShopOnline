@@ -13,10 +13,22 @@
         app:titleTextColor="#F7F3F3"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
+   <FrameLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <TextView
+           android:id="@+id/historyOrderTv"
+           android:gravity="center"
+           android:layout_gravity="center"
+           android:text="History order is empty"
+           android:textSize="30sp"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"/>
 
-    <ListView
-        android:id="@+id/historyOrderListView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+       <ListView
+           android:id="@+id/historyOrderListView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"/>
+   </FrameLayout>
 
 </LinearLayout>

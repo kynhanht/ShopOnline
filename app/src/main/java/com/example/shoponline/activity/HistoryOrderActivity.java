@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.shoponline.R;
 import com.example.shoponline.apdapter.OrderAdapter;
@@ -27,6 +28,7 @@ import java.util.List;
 public class HistoryOrderActivity extends AppCompatActivity {
 
     private Toolbar historyOrderToolBar;
+    private TextView historyOrderTv;
     private ListView historyOrderListView;
     private OrderAdapter orderAdapter;
     private DBHelper dbHelper=null;
@@ -42,6 +44,7 @@ public class HistoryOrderActivity extends AppCompatActivity {
 
     private void mapping() {
         historyOrderToolBar=findViewById(R.id.historyOrderToolBar);
+        historyOrderTv=findViewById(R.id.historyOrderTv);
         historyOrderListView=findViewById(R.id.historyOrderListView);
         dbHelper=new DBHelper(getApplicationContext(),"product.db",null,1);
         db=dbHelper.getReadableDatabase();
@@ -59,6 +62,14 @@ public class HistoryOrderActivity extends AppCompatActivity {
 
         }
 
+        if(orderList.isEmpty()){
+            historyOrderTv.setVisibility(View.VISIBLE);
+            historyOrderListView.setVisibility(View.INVISIBLE);
+            return;
+        }
+
+        historyOrderTv.setVisibility(View.INVISIBLE);
+        historyOrderListView.setVisibility(View.VISIBLE);
         orderAdapter=new OrderAdapter(this,R.layout.history_oder_list_view,orderList);
         historyOrderListView.setAdapter(orderAdapter);
 

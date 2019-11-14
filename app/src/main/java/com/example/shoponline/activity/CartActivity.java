@@ -45,7 +45,7 @@ public class CartActivity extends AppCompatActivity  {
     CartItemAdapter cartItemAdapter;
     private DBHelper dbHelper=null;
     private SQLiteDatabase db=null;
-
+    private DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +65,6 @@ public class CartActivity extends AppCompatActivity  {
             cartListView.setAdapter(cartItemAdapter);
             cartTv.setVisibility(View.INVISIBLE);
             cartListView.setVisibility(View.VISIBLE);
-            DecimalFormat decimalFormat=new DecimalFormat("###,###,###");
             String totalPrice=decimalFormat.format(MainActivity.cart.getTotalprice());
             totalPriceTv.setText(totalPrice+" Đ");
         }
@@ -173,9 +172,12 @@ public class CartActivity extends AppCompatActivity  {
             int pos =info.position;
             MainActivity.cart.getCartItemList().remove(pos);
             cartItemAdapter.notifyDataSetChanged();
+            String totalPrice=decimalFormat.format(MainActivity.cart.getTotalprice());
+            totalPriceTv.setText(totalPrice+" Đ");
             if(MainActivity.cart.getCartItemList().isEmpty()){
                 cartTv.setVisibility(View.VISIBLE);
                 cartListView.setVisibility(View.INVISIBLE);
+                totalPriceTv.setText("");
             }
 
         }

@@ -89,6 +89,7 @@ public class MainActivity extends AppCompatActivity {
         navigationView=findViewById(R.id.navigationView);
         drawerLayout=findViewById(R.id.drawerLayout);
         userImageView=findViewById(R.id.userImageView);
+        recyclerView.addItemDecoration(new SpacesItemDecoration(20));
 
         //user
         View headerLayout=navigationView.getHeaderView(0);
@@ -197,7 +198,6 @@ public class MainActivity extends AppCompatActivity {
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(this,2));
             recyclerView.setAdapter(newProductAdapter);
-            recyclerView.addItemDecoration(new SpacesItemDecoration(20));
         }
 
     }
