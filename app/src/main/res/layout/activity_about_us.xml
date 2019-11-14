@@ -6,7 +6,7 @@
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/aboutUsToolbar"
-        map:title="About Us"
+        map:title="About Information"
         android:background="@drawable/backgroud_login"
         map:titleTextColor="#F0EAEA"
         android:layout_width="match_parent"

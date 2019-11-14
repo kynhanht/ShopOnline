@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //get information for header navbar
     private void addUser() {
         if(user==null){
             user= (User) getIntent().getSerializableExtra("user");
@@ -81,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
         emailUserTv.setText(user.getEmail());
     }
 
-
+    //mapping all view of layout
     private void mapping(){
         toolbar=findViewById(R.id.toolBar);
         viewFlipper=findViewById(R.id.viewFlipper);
@@ -91,43 +92,46 @@ public class MainActivity extends AppCompatActivity {
         userImageView=findViewById(R.id.userImageView);
         recyclerView.addItemDecoration(new SpacesItemDecoration(20));
 
-        //user
+        //mapping view  about information of user
         View headerLayout=navigationView.getHeaderView(0);
         nameUserTv=headerLayout.findViewById(R.id.nameUserTv);
         emailUserTv=headerLayout.findViewById(R.id.emailUserTv);
+        //set action navigation
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if(menuItem.getItemId()==R.id.homeItem){
+                //catch event for every item navigation
+                if(menuItem.getItemId()==R.id.homeItem){//click home
                     drawerLayout.closeDrawer(GravityCompat.START);
-                }else if(menuItem.getItemId()==R.id.lapTopItem){
+                }else if(menuItem.getItemId()==R.id.lapTopItem){// click laptop item
                     Intent intent=new Intent(getApplicationContext(),ProductActivity.class);
                     intent.putExtra("type",1);
                     startActivity(intent);
-                }else if(menuItem.getItemId()==R.id.smartPhoneItem){
+                }else if(menuItem.getItemId()==R.id.smartPhoneItem){// click SmartPhone item
                     Intent intent=new Intent(getApplicationContext(),ProductActivity.class);
                     intent.putExtra("type",2);
                     startActivity(intent);
-                }else if(menuItem.getItemId()==R.id.watchItem){
+                }else if(menuItem.getItemId()==R.id.watchItem){// click watch item
                     Intent intent=new Intent(getApplicationContext(),ProductActivity.class);
                     intent.putExtra("type",3);
                     startActivity(intent);
-                }else if(menuItem.getItemId()==R.id.myProfileItem){
+                }else if(menuItem.getItemId()==R.id.myProfileItem){// click profile item
                     Intent intent=new Intent(getApplicationContext(),ProfileUserActivity.class);
                     startActivity(intent);
-                }else if(menuItem.getItemId()==R.id.myOrderItem){
+                }else if(menuItem.getItemId()==R.id.myOrderItem){// click my order
                     Intent intent=new Intent(getApplicationContext(),HistoryOrderActivity.class);
                     startActivity(intent);
-                }else if(menuItem.getItemId()==R.id.aboutUsItem){
+                }else if(menuItem.getItemId()==R.id.aboutUsItem){//click about information
                     Intent intent=new Intent(getApplicationContext(),AboutUsActivity.class);
                     startActivity(intent);
-                }else{
+                }else{//logout
                     cart=null;
                     user=null;
                     Intent intent=new Intent(getApplicationContext(),LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }
+                //close navigation
                 drawerLayout.closeDrawer(GravityCompat.START);
                 return false;
             }
@@ -135,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(cart!=null){
 
-        }else{
+        }else{// when first init main
             cart=new Cart();
         }
     }
@@ -154,10 +158,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void actionViewFlipper() {
+        //add link image for Flipper
         List<String> listFlipper=new ArrayList<>();
         listFlipper.add("https://image.slidesharecdn.com/bquytlmnhqungco-140828055439-phpapp01/95/10-b-quyt-lm-nh-qung-co-facebook-9-638.jpg?cb=1409205831");
         listFlipper.add("http://www.hisella.vn/wp-content/uploads/2016/02/12764731_1727299887507529_7329304196808002046_o.jpg");
         listFlipper.add("http://www.chupsanpham.vn/uploads/2/1/6/8/21683184/3568618_orig.jpg");
+        // convert item of Flipper into ImageView
         for(int i=0;i<listFlipper.size();i++){
             ImageView imageView=new ImageView(getApplicationContext());
             Picasso.with(getApplicationContext()).load(listFlipper.get(i)).into(imageView);
@@ -165,6 +171,7 @@ public class MainActivity extends AppCompatActivity {
             viewFlipper.addView(imageView);
         }
 
+        //set animation for viewFlipper
         Animation animationSlideIn= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_in_right);
         Animation animationSlideOut= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);
         viewFlipper.setInAnimation(animationSlideIn);
@@ -175,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
+    //get new product when init or resume
     @Override
     protected void onResume() {
         super.onResume();
@@ -201,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+    // set option menu for cart item
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
