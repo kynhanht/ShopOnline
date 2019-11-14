@@ -10,6 +10,8 @@
     android:weightSum="10">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/registerToolbar"
+        app:title="Register"
+        app:titleTextColor="#F0EAEA"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"/>
     <LinearLayout

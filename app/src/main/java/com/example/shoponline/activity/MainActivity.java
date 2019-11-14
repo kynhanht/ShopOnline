@@ -159,18 +159,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void actionViewFlipper() {
         //add link image for Flipper
-        List<String> listFlipper=new ArrayList<>();
-        listFlipper.add("https://image.slidesharecdn.com/bquytlmnhqungco-140828055439-phpapp01/95/10-b-quyt-lm-nh-qung-co-facebook-9-638.jpg?cb=1409205831");
-        listFlipper.add("http://www.hisella.vn/wp-content/uploads/2016/02/12764731_1727299887507529_7329304196808002046_o.jpg");
-        listFlipper.add("http://www.chupsanpham.vn/uploads/2/1/6/8/21683184/3568618_orig.jpg");
+//        List<String> listFlipper=new ArrayList<>();
+//        listFlipper.add("https://hoanghamobile.com/tin-tuc/wp-content/uploads/2017/06/j7-pro.png");
+//        listFlipper.add("https://www.sapo.vn/blog/wp-content/uploads/2014/10/banner-quang-cao-du-khach-hang-hieu-qua-3.jpg");
+//        listFlipper.add("http://www.chupsanpham.vn/uploads/2/1/6/8/21683184/3568618_orig.jpg");
         // convert item of Flipper into ImageView
-        for(int i=0;i<listFlipper.size();i++){
-            ImageView imageView=new ImageView(getApplicationContext());
-            Picasso.with(getApplicationContext()).load(listFlipper.get(i)).into(imageView);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
-            viewFlipper.addView(imageView);
-        }
 
+//        for(int i=0;i<listFlipper.size();i++){
+//            ImageView imageView=new ImageView(getApplicationContext());
+//            Picasso.with(getApplicationContext()).load(listFlipper.get(i)).into(imageView);
+//            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+//            viewFlipper.addView(imageView);
+//        }
+        ImageView imageView=new ImageView(getApplicationContext());
+        imageView.setImageResource(R.drawable.banner);
+        imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+        viewFlipper.addView(imageView);
         //set animation for viewFlipper
         Animation animationSlideIn= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_in_right);
         Animation animationSlideOut= AnimationUtils.loadAnimation(getApplicationContext(),R.anim.slide_out_right);

@@ -42,7 +42,7 @@
                     android:gravity="center"
                     android:text="Name"
                     android:textColor="#101010"
-                    android:textSize="15sp" />
+                    android:textSize="12sp" />
 
                 <TextView
                     android:id="@+id/hotPriceTv"
@@ -51,7 +51,7 @@
                     android:gravity="center"
                     android:text="Price"
                     android:textColor="#f20"
-                    android:textSize="12sp" />
+                    android:textSize="10sp" />
 
             </LinearLayout>
         </FrameLayout>

@@ -120,6 +120,7 @@ public class CartActivity extends AppCompatActivity  {
                     int productId=cartItemList.get(i).getProductId();
                     db.execSQL(Constant.UPDATE_QUANTITY_PRODUCT,new Object[]{newQuantity,productId});
                 }
+                Toast.makeText(getApplicationContext(),"Check out successful!",Toast.LENGTH_LONG).show();
                 finish();
                 MainActivity.cart=new Cart();
 
